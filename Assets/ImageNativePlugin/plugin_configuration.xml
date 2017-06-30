@@ -3,6 +3,8 @@
     <Parameter ParameterName="parameterName" ParameterType="IntPointer" />
   </Method>
   <Method MethodName="PluginGetFrameCount" ReturnType="Int" />
+  <Method MethodName="PluginGetHeight" ReturnType="Int" />
+  <Method MethodName="PluginGetWidth" ReturnType="Int" />
   <Method MethodName="PluginGetPixel" ReturnType="Int">
     <Parameter ParameterName="frame" ParameterType="Int" />
     <Parameter ParameterName="x" ParameterType="Int" />

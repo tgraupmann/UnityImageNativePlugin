@@ -2,6 +2,8 @@
 // *.pch will be the pre-compiled header
 // stdafx.obj will contain the pre-compiled type information
 
+// DebugLog reference: http://hojjatjafary.blogspot.ca/2013/01/c-plugin-debug-log.html
+
 #include "stdafx.h"
 #include <iostream>
 
@@ -51,6 +53,18 @@ extern "C"
 	EXPORT_API int PluginGetFrameCount()
 	{
 		Debug("PluginGetFrameCount:");
+		return 0;
+	}
+
+	EXPORT_API int PluginGetHeight()
+	{
+		Debug("PluginGetHeight:");
+		return 0;
+	}
+
+	EXPORT_API int PluginGetWidth()
+	{
+		Debug("PluginGetWidth:");
 		return 0;
 	}
 

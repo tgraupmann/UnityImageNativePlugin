@@ -11,7 +11,13 @@ public class ImageManager : MonoBehaviour
 	[DllImport("UnityImageNativePlugin")]
 	private static extern int PluginGetFrameCount();
 
-	[DllImport("UnityImageNativePlugin")]
+    [DllImport("UnityImageNativePlugin")]
+    private static extern int PluginGetHeight();
+
+    [DllImport("UnityImageNativePlugin")]
+    private static extern int PluginGetWidth();
+
+    [DllImport("UnityImageNativePlugin")]
 	private static extern int PluginGetPixel(int frame, int x, int y);
 
     #region Handle Debug.Log from unmanged code
@@ -60,7 +66,17 @@ public class ImageManager : MonoBehaviour
         LoadImage("Hello World!");
 
         int frameCount = PluginGetFrameCount();
-
-        int color = PluginGetPixel(1, 2, 3);
+        int height = PluginGetHeight();
+        int width = PluginGetWidth();
+        for (int index = 0; index < frameCount; ++index)
+        {
+            for (int i = 0; i < height; ++i)
+            {
+                for (int j = 0; j < width; ++j)
+                {
+                    int color = PluginGetPixel(index, j, i);
+                }
+            }
+        }
     }
 }
