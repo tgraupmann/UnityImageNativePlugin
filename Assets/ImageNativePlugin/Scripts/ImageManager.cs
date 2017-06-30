@@ -5,24 +5,31 @@ using UnityEngine;
 
 public class ImageManager : MonoBehaviour
 {
-    [DllImport("UnityImageNativePlugin")]
+#if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
+    const string DLL_NAME = "UnityImageNativePlugin3";
+
+#else
+    const string DLL_NAME = "UnityImageNativePlugin";
+#endif
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+    [DllImport(DLL_NAME)]
 	private static extern void PluginLoadImage(IntPtr path);
 
-	[DllImport("UnityImageNativePlugin")]
-	private static extern int PluginGetFrameCount();
+    [DllImport(DLL_NAME)]
+    private static extern int PluginGetFrameCount();
 
-    [DllImport("UnityImageNativePlugin")]
+    [DllImport(DLL_NAME)]
     private static extern int PluginGetHeight();
 
-    [DllImport("UnityImageNativePlugin")]
+    [DllImport(DLL_NAME)]
     private static extern int PluginGetWidth();
 
-    [DllImport("UnityImageNativePlugin")]
+    [DllImport(DLL_NAME)]
 	private static extern int PluginGetPixel(int frame, int x, int y);
 
-    #region Handle Debug.Log from unmanged code
+#region Handle Debug.Log from unmanged code
 
-    [DllImport("UnityImageNativePlugin")]
+    [DllImport(DLL_NAME)]
     private static extern void PluginSetLogDelegate(IntPtr logDelegate);
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -48,7 +55,7 @@ public class ImageManager : MonoBehaviour
         PluginSetLogDelegate(_sLogDelegate);
     }
 
-    #endregion
+#endregion
 
     public static void LoadImage(string path)
     {
@@ -79,4 +86,5 @@ public class ImageManager : MonoBehaviour
             }
         }
     }
+#endif
 }

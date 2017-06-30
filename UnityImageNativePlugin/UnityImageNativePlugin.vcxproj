@@ -95,6 +95,7 @@ ECHO $(Platform)
 DIR "$(outdir)"
 IF NOT EXIST "..\Assets\Plugins\" MKDIR "..\Assets\Plugins\"
 IF NOT EXIST "..\Assets\Plugins\x86" MKDIR "..\Assets\Plugins\x86"
+COPY /Y "$(outdir)\UnityImageNativePlugin.dll" "..\Assets\Plugins\UnityImageNativePlugin3.dll"
 COPY /Y "$(outdir)\UnityImageNativePlugin.dll" "..\Assets\Plugins\x86\UnityImageNativePlugin.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -139,6 +140,7 @@ ECHO $(Platform)
 DIR "$(outdir)"
 IF NOT EXIST "..\Assets\Plugins\" MKDIR "..\Assets\Plugins\"
 IF NOT EXIST "..\Assets\Plugins\x86" MKDIR "..\Assets\Plugins\x86"
+COPY /Y "$(outdir)\UnityImageNativePlugin.dll" "..\Assets\Plugins\UnityImageNativePlugin3.dll"
 COPY /Y "$(outdir)\UnityImageNativePlugin.dll" "..\Assets\Plugins\x86\UnityImageNativePlugin.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

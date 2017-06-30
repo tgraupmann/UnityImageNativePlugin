@@ -14,3 +14,5 @@ Assets/Plugins/UnityImageNativePlugin.dll
 .vs/
 UnityImageNativePlugin/Release/
 UnityImageNativePlugin/x64/
+UnityImageNativePlugin.Editor.csproj
+UnityImageNativePlugin.csproj
