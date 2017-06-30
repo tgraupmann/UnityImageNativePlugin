@@ -19,9 +19,9 @@
 
 extern "C"
 {
-	EXPORT_API void LoadImage();
+	EXPORT_API void PluginLoadImage(char* path);
 
-	EXPORT_API int GetFrameCount();
+	EXPORT_API int PluginGetFrameCount();
 
-	EXPORT_API int GetPixel(int frame, int x, int y);
+	EXPORT_API int PluginGetPixel(int frame, int x, int y);
 }

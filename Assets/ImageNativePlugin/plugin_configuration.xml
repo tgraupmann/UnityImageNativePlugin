@@ -1,7 +1,9 @@
 <Root>
-  <Method MethodName="LoadImage" ReturnType="Void" />
-  <Method MethodName="GetFrameCount" ReturnType="Int" />
-  <Method MethodName="GetPixel" ReturnType="Int">
+  <Method MethodName="PluginLoadImage" ReturnType="Void">
+    <Parameter ParameterName="parameterName" ParameterType="IntPointer" />
+  </Method>
+  <Method MethodName="PluginGetFrameCount" ReturnType="Int" />
+  <Method MethodName="PluginGetPixel" ReturnType="Int">
     <Parameter ParameterName="frame" ParameterType="Int" />
     <Parameter ParameterName="x" ParameterType="Int" />
     <Parameter ParameterName="y" ParameterType="Int" />

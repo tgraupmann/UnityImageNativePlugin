@@ -1,2 +1,13 @@
 Library/
 Temp/
+Assets/StandalonePluginMaker/
+Assembly-CSharp-vs.csproj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp.csproj
+UnityImageNativePlugin-csharp.sln
+Assembly-CSharp-Editor-vs.csproj
+UnityImageNativePlugin/.vs/
+UnityImageNativePlugin/Debug/
+obj/
+UnityImageNativePlugin.sln
+Assets/Plugins/UnityImageNativePlugin.dll
