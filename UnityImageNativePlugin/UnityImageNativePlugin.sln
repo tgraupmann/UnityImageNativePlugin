@@ -1,0 +1,20 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{731e8a51-6179-4a02-969f-90024b2dfc78}") = "UnityImageNativePlugin", "UnityImageNativePlugin.vcxproj", "{5458ad76-2d36-4079-9c6c-7471f5996242}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5458ad76-2d36-4079-9c6c-7471f5996242}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5458ad76-2d36-4079-9c6c-7471f5996242}.Debug|Win32.Build.0 = Debug|Win32
+		{5458ad76-2d36-4079-9c6c-7471f5996242}.Release|Win32.ActiveCfg = Release|Win32
+		{5458ad76-2d36-4079-9c6c-7471f5996242}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
