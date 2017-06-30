@@ -8,8 +8,34 @@
 // TODO: reference any additional headers you need in STDAFX.H
 // and not in this file
 
+
+/* Setup log mechanism */
+typedef void(*DebugLogPtr)(const char *);
+DebugLogPtr _gDebugLogPtr;
+void Debug(const char* text)
+{
+	if (NULL == _gDebugLogPtr)
+	{
+		return;
+	}
+	else if (NULL == text)
+	{
+		_gDebugLogPtr("");
+	}
+	else
+	{
+		_gDebugLogPtr(text);
+	}
+}
+/* End of setup log mechanism */
+
 extern "C"
 {
+	EXPORT_API void PluginSetLogDelegate(DebugLogPtr fp)
+	{
+		_gDebugLogPtr = fp;
+	}
+
 	EXPORT_API void PluginLoadImage(char* path)
 	{
 		if (NULL == path)
@@ -17,18 +43,22 @@ extern "C"
 			return;
 		}
 
-		printf("PluginLoadImage: %s", path);
+		char buffer[256] = { 0 };
+		sprintf(buffer, "PluginLoadImage: %s", path);
+		Debug(buffer);
 	}
 
 	EXPORT_API int PluginGetFrameCount()
 	{
-		printf("PluginGetFrameCount:");
+		Debug("PluginGetFrameCount:");
 		return 0;
 	}
 
 	EXPORT_API int PluginGetPixel(int frame, int x, int y)
 	{
-		printf("PluginGetPixel: frame=%d x=%d y=%d", frame, x, y);
+		char buffer[256] = { 0 };
+		sprintf(buffer, "PluginGetPixel: frame=%d x=%d y=%d", frame, x, y);
+		Debug(buffer);
 		return 0;
 	}
 }
