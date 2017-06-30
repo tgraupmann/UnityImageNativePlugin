@@ -11,3 +11,4 @@ UnityImageNativePlugin/Debug/
 obj/
 UnityImageNativePlugin.sln
 Assets/Plugins/UnityImageNativePlugin.dll
+.vs/

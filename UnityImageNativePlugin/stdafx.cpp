@@ -18,8 +18,6 @@ extern "C"
 		}
 
 		printf("PluginLoadImage: %s", path);
-
-		delete path;
 	}
 
 	EXPORT_API int PluginGetFrameCount()
