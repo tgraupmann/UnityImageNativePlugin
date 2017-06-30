@@ -12,3 +12,5 @@ obj/
 UnityImageNativePlugin.sln
 Assets/Plugins/UnityImageNativePlugin.dll
 .vs/
+UnityImageNativePlugin/Release/
+UnityImageNativePlugin/x64/

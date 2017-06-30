@@ -46,7 +46,7 @@ extern "C"
 		}
 
 		char buffer[256] = { 0 };
-		sprintf(buffer, "PluginLoadImage: %s", path);
+		sprintf_s(buffer, "PluginLoadImage: %s", path);
 		Debug(buffer);
 	}
 
@@ -71,7 +71,7 @@ extern "C"
 	EXPORT_API int PluginGetPixel(int frame, int x, int y)
 	{
 		char buffer[256] = { 0 };
-		sprintf(buffer, "PluginGetPixel: frame=%d x=%d y=%d", frame, x, y);
+		sprintf_s(buffer, "PluginGetPixel: frame=%d x=%d y=%d", frame, x, y);
 		Debug(buffer);
 		return 0;
 	}
