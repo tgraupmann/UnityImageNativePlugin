@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
 
-public class ImageManager : MonoBehaviour
+public class ImageManager
 {
 #if UNITY_3 || UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
     const string DLL_NAME = "UnityImageNativePlugin3";
@@ -17,16 +17,16 @@ public class ImageManager : MonoBehaviour
 	private static extern void PluginLoadImage(IntPtr path);
 
     [DllImport(DLL_NAME)]
-    private static extern int PluginGetFrameCount();
+    public static extern int PluginGetFrameCount();
 
     [DllImport(DLL_NAME)]
-    private static extern int PluginGetHeight();
+    public static extern int PluginGetHeight();
 
     [DllImport(DLL_NAME)]
-    private static extern int PluginGetWidth();
+    public static extern int PluginGetWidth();
 
     [DllImport(DLL_NAME)]
-	private static extern int PluginGetPixel(int frame, int x, int y);
+    public static extern int PluginGetPixel(int frame, int x, int y);
 
 #region Handle Debug.Log from unmanged code
 
@@ -72,33 +72,23 @@ public class ImageManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Convert BGR int to Unity Color
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public static Color ToRGB(int color)
+    {
+        const float invert = 1f / 255f;
+        int red = color & 0xFF;
+        int green = (color & 0xFF00) >> 8;
+        int blue = (color & 0xFF0000) >> 16;
+        return new Color(red * invert, green * invert, blue * invert);
+    }
+
     static ImageManager()
     {
         SetupLogMechanism();
-
-        string path = @"Assets\ImageNativePlugin\Textures\keyboard_image.gif";
-        Debug.Log(string.Format("File exists: {0}", File.Exists(path)));
-
-        if (File.Exists(path))
-        {
-            LoadImage(path);
-        }
-
-        int frameCount = PluginGetFrameCount();
-        Debug.Log(string.Format("Frame count: {0}", frameCount));
-
-        int height = PluginGetHeight();
-        int width = PluginGetWidth();
-        for (int index = 0; index < frameCount; ++index)
-        {
-            for (int i = 0; i < height; ++i)
-            {
-                for (int j = 0; j < width; ++j)
-                {
-                    int color = PluginGetPixel(index, j, i);
-                }
-            }
-        }
     }
 #endif
 }
