@@ -8,7 +8,7 @@ public class ShowTexturePixels : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        string path = @"Assets\ImageNativePlugin\Textures\keyboard_image.gif";
+        string path = @"Assets\ImageNativePlugin\Textures\keyboard_image.jpg";
         Debug.Log(string.Format("File exists: {0}", File.Exists(path)));
 
         if (File.Exists(path))

@@ -51,7 +51,11 @@ void CopyPixels(COLORREF* pColor, UINT width, UINT height)
 		vector<int> row = vector<int>();
 		for (int j = 0; j < (int)width; j++)
 		{
-			int color = *pColor;
+			int red = GetBValue(*pColor);
+			int green = GetGValue(*pColor) << 8;
+			int blue = GetRValue(*pColor) << 16;
+
+			int color = red | green | blue;
 			row.push_back(color);			
 			pColor++;
 		}
