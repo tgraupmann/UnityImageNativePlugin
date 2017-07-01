@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
@@ -59,20 +60,33 @@ public class ImageManager : MonoBehaviour
 
     public static void LoadImage(string path)
     {
-        byte[] array = UTF8Encoding.UTF8.GetBytes(path);
-        IntPtr lpData = Marshal.AllocHGlobal(array.Length);
-        Marshal.Copy(array, 0, lpData, array.Length);
-        PluginLoadImage(lpData);
-        Marshal.FreeHGlobal(lpData);
+        FileInfo fi = new FileInfo(path);
+        if (fi.Exists)
+        {
+            byte[] array = ASCIIEncoding.ASCII.GetBytes(fi.FullName);
+            //array[array.Length - 1] = 0;
+            IntPtr lpData = Marshal.AllocHGlobal(array.Length);
+            Marshal.Copy(array, 0, lpData, array.Length);
+            PluginLoadImage(lpData);
+            Marshal.FreeHGlobal(lpData);
+        }
     }
 
     static ImageManager()
     {
         SetupLogMechanism();
 
-        LoadImage("Hello World!");
+        string path = @"Assets\ImageNativePlugin\Textures\keyboard_image.gif";
+        Debug.Log(string.Format("File exists: {0}", File.Exists(path)));
+
+        if (File.Exists(path))
+        {
+            LoadImage(path);
+        }
 
         int frameCount = PluginGetFrameCount();
+        Debug.Log(string.Format("Frame count: {0}", frameCount));
+
         int height = PluginGetHeight();
         int width = PluginGetWidth();
         for (int index = 0; index < frameCount; ++index)
